@@ -26,7 +26,7 @@ declare -r dpnDeb_Picom="libconfig-dev libdbus-1-dev libegl-dev libev-dev libgl-
 declare -r dpnFed_Picom="dbus-devel gcc git libconfig-devel libev-devel libX11-devel libX11-xcb libxcb-devel libGL-devel libEGL-devel libepoxy-devel meson pcre2-devel pixman-devel uthash-devel xcb-util-image-devel xcb-util-renderutil-devel xorg-x11-proto-devel xcb-util-devel"
 declare -r OS=$(cat /etc/*release | grep '^ID*' | awk '{print $NF}' FS='='| tail -n 1)
 declare -r NAME=$(cat /etc/*release | grep '^NAME' | awk '{print $NF}' FS='=' | tr -d '"' | awk '{print $1}')
-declare -r cwd=$(pwd)
+declare -r cwd="$(pwd)/dotfiles"
 declare -a fonts=( ShareTechMono IosevkaTermSlab DaddyTimeMono Iosevka )
 
 	# --> Msg exit when ctrl+c
@@ -522,7 +522,8 @@ function main(){
 		echo -ne "\n\n\t${bold}${cyan}<|[+]|> ${end}${red}cOd3 ${cyan}d0n3!!\n\n"
 	fi
 
-	fonts && clipmenu && firefox_esr && htb-Xplorer && nvim && zsh_Plugins && dotfiles
+	dotfiles
+#	fonts && clipmenu && firefox_esr && htb-Xplorer && nvim && zsh_Plugins && dotfiles
 }
 
 ################################################################################################################
