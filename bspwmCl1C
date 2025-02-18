@@ -457,7 +457,7 @@ function main(){
 			fi
 		fi
 	else
-		echo -ne "\n\n\t${bold}${cyan}<|[+]|> ${end}${red}p1c0m ${cyan}d0n3!!\n\n"
+		echo -ne "\n\n\t${bold}${cyan}<|[+]|> ${end}${red}p1C0m ${cyan}d0n3!!\n\n"
 	fi
 
 	which bspwm >/dev/null 2>&1
