@@ -27,7 +27,6 @@ declare -r dpnFed_Picom="dbus-devel gcc git libconfig-devel libev-devel libX11-d
 declare -r OS=$(cat /etc/*release | grep '^ID*' | awk '{print $NF}' FS='='| tail -n 1)
 declare -r NAME=$(cat /etc/*release | grep '^NAME' | awk '{print $NF}' FS='=' | tr -d '"' | awk '{print $1}')
 declare -r cwd="$(pwd)/dotfiles"
-declare -a fonts=( ShareTechMono IosevkaTermSlab DaddyTimeMono Iosevka )
 
 	# --> Msg exit when ctrl+c
 function ctrl_c(){
@@ -60,6 +59,7 @@ fi
 		# -->  Fonts & Icons
 function fonts(){
 	tput cnorm
+	declare -a fonts=( ShareTechMono IosevkaTermSlab DaddyTimeMono Iosevka )
 
 	version='3.2.1'
         fonts_Path="/usr/share/fonts/nerd_fonts"
