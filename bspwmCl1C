@@ -1,4 +1,4 @@
-#!/bin/bash
+ #!/bin/bash
 # Author: Roi Diéguez - aka 47z!Lu7h
 
 	# --> Banner
@@ -16,7 +16,7 @@ echo -ne "\t\t\t${red}${bold}
 }
 
 # --> Globals
-declare -r packages="slop wmctrl pulseaudio-utils playerctl zsh rofi kitty git jq cmake npm g++ gettext feh dash bat meson neowofetch wget curl xclip net-tools openvpn html2text fzf rlwrap gpick trash-cli brightnessctl jsbeautifier lxappearance ranger suckless-tools xsel qt5ct libxfixes-dev"
+declare -r packages="slop wmctrl pulseaudio-utils playerctl zsh rofi kitty git jq cmake npm g++ gettext feh dash bat meson wget curl xclip net-tools openvpn html2text fzf rlwrap gpick trash-cli brightnessctl jsbeautifier lxappearance ranger suckless-tools xsel qt5ct libxfixes-dev"
 declare -r dpnArch_Bspwm="libxcb xcb-util xcb-util-wm xcb-util-keysyms"
 declare -r dpnDeb_Bspwm="libxcb-xinerama0-dev libxcb-icccm4-dev libxcb-randr0-dev libxcb-util0-dev libxcb-ewmh-dev libxcb-keysyms1-dev libxcb-shape0-dev"
 declare -r dpnFed_Bspwm="libxcb xcb-util xcb-util-wm xcb-util-keysyms libxcb-devel xcb-util-wm-devel xcb-util-keysyms-devel xcb-util-devel"
@@ -135,7 +135,7 @@ function clipmenu() {
 
 	echo -ne "\n\t${bold}${cyan}|[+]|> ${green}Cloning Clipmenu${cyan}~~${bold}${cyan}> ${end}${cyan}\n\n\n" && sleep 1
 
-	git clone "git@github.com:cdown/clipmenu.git" && cd clipmenu && make && sudo make install
+	git clone "https://github.com/cdown/clipmenu.git" && cd clipmenu && make && sudo make install
 	if [ $? -eq 0 ]; then
 		git clone "https://github.com/cdown/clipnotify.git" && cd clipnotify && make && sudo make install
 		if [ $? -eq 0 ]; then
@@ -396,29 +396,28 @@ function dotfiles(){
 
 	echo -ne "\n\n\t${bold}${cyan}<[+]> ${end}${blue}Coping ${bold}dotfiles ${cyan}\n\n" && sleep 1
 
-	if [ -d $HOME/.config/bspwm ]; then
-		mv $HOME/.config/bspwm $HOME/.config/bspwm.OLD
+	if  [[ $OS = Kali  ]]; then
+		sudo apt install -y neowofetch;
+	else
+		sudo apt install -y neofetch;
 	fi
+
+	if [ -d $HOME/.config/bspwm ]; then mv $HOME/.config/bspwm $HOME/.config/bspwm.OLD; fi
 
 	if [ -d $HOME/.config/polybar ]; then
-		mv $HOME/.config/polybar $HOME/.config/polybar.OLD
-	fi
+		mv $HOME/.config/polybar $HOME/.config/polybar.OLD; fi
 
 	if [ -d $HOME/.config/picom ]; then
-		mv $HOME/.config/picom $HOME/.config/picom.OLD
-	fi
+		mv $HOME/.config/picom $HOME/.config/picom.OLD; fi
 
 	if [ -d $HOME/.config/sxhkd ]; then
-		mv $HOME/.config/sxhkd $HOME/.config/sxhkd.OLD
-	fi
+		mv $HOME/.config/sxhkd $HOME/.config/sxhkd.OLD; fi
 
 	if [ -d $HOME/.config/kitty ]; then
-		mv $HOME/.config/kitty $HOME/.config/kitty.OLD
-	fi
+		mv $HOME/.config/kitty $HOME/.config/kitty.OLD; fi
 
 	if [ -d $HOME/.config/rofi ]; then
-		mv $HOME/.config/rofi $HOME/.config/rofi.OLD
-	fi
+		mv $HOME/.config/rofi $HOME/.config/rofi.OLD; fi
 
 	cp -r $cwd/config/* $HOME/.config/
 	sudo cp -r $cwd/misc/usr/share/* /usr/share/
