@@ -1,4 +1,4 @@
- #!/bin/bash
+#!/bin/bash
 # Author: Roi Diéguez - aka 47z!Lu7h
 
 	# --> Banner
@@ -396,10 +396,21 @@ function dotfiles(){
 
 	echo -ne "\n\n\t${bold}${cyan}<[+]> ${end}${blue}Coping ${bold}dotfiles ${cyan}\n\n" && sleep 1
 
-	if  [[ $OS = Kali  ]]; then
+	if  [[ $OS = Kali ]]; then
 		sudo apt install -y neowofetch;
+		sed -i 's/image_source="$HOME/.config/neowofetch/*"/image_source="$HOME/.config/neowofetch/kali.png"/g'	~/.config/neowofetch/config.conf
+
+	elif [[ $OS = Parrot ]]
+		sudo apt install -y neofetch;
+		sed -i 's/image_source="$HOME/.config/neofetch/*"/image_source="$HOME/.config/neofetch/parrot.png"/g'	~/.config/neofetch/config.conf
+
+	elif [[ $OS = Ubuntu ]]
+		sudo apt install -y neofetch;
+		sed -i 's/image_source="$HOME/.config/neofetch/*"/image_source="$HOME/.config/neofetch/parrot.png"/g'	~/.config/neofetch/config.conf
+
 	else
 		sudo apt install -y neofetch;
+		sed -i 's/image_backend="*"/image_backend="ascii"/g'	~/.config/neofetch/config.conf
 	fi
 
 	if [ -d $HOME/.config/bspwm ]; then mv $HOME/.config/bspwm $HOME/.config/bspwm.OLD; fi
